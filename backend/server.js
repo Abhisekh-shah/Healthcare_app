@@ -96,6 +96,24 @@ app.use(helmet());
 
 // ✅ CORS - handle preflight first, then apply to all routes
 app.options('*', cors());
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     const allowedOrigins = [
+//       'http://localhost:5173',
+//       'http://localhost:3000',
+//       process.env.CLIENT_URL,
+//     ].filter(Boolean);
+
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   credentials: true,
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+// }));
 app.use(cors({
   origin: function (origin, callback) {
     const allowedOrigins = [
@@ -104,7 +122,12 @@ app.use(cors({
       process.env.CLIENT_URL,
     ].filter(Boolean);
 
-    if (!origin || allowedOrigins.includes(origin)) {
+    // ✅ Allow all Vercel preview deployments of your frontend
+    const isVercelPreview = origin && origin.match(
+      /https:\/\/healthcare-app-umeo.*\.vercel\.app/
+    );
+
+    if (!origin || allowedOrigins.includes(origin) || isVercelPreview) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
