@@ -1,13 +1,13 @@
 
-import { useState, useEffect, useCallback } from 'react';
-import { getDoctors, getDoctorSlots } from '../../services/doctorService';
-import { bookAppointment } from '../../services/appointmentService';
-import { SPECIALIZATIONS, getErrorMessage } from '../../utils/helpers';
-import { format, addDays } from 'date-fns';
+import { CalendarIcon, FunnelIcon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { addDays, format } from 'date-fns';
+import { useCallback, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import LoadingSpinner from '../../components/common/LoadingSpinner';
 import Pagination from '../../components/common/Pagination';
-import { MagnifyingGlassIcon, FunnelIcon, StarIcon, XMarkIcon, CalendarIcon } from '@heroicons/react/24/outline';
-import toast from 'react-hot-toast';
+import { bookAppointment } from '../../services/appointmentService';
+import { getDoctors, getDoctorSlots } from '../../services/doctorService';
+import { getErrorMessage, SPECIALIZATIONS } from '../../utils/helpers';
 
 export default function DoctorsList() {
   const [doctors, setDoctors] = useState([]);
@@ -198,10 +198,8 @@ export default function DoctorsList() {
                     
                     <p className="text-blue-600 text-sm">{doctor.specialization}</p>
                     <div className="flex items-center gap-1 mt-0.5">
-                      <StarIcon className="h-3.5 w-3.5 text-yellow-400 fill-yellow-400" />
-                      <span className="text-xs text-gray-500">
-                        {doctor.rating?.average?.toFixed(1) || '0.0'} ({doctor.rating?.count || 0} reviews)
-                      </span>
+                      
+
                     </div>
                   </div>
                 </div>
