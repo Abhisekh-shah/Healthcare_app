@@ -1,24 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Outfit:wght@100..900&family=Prata&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ============================================
-   IMPORTS & FONTS
-   ============================================ */
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Outfit:wght@100..900&family=Prata&display=swap');
-
-/* ============================================
-   BASE LAYER
-   ============================================ */
 @layer base {
   body {
     @apply bg-gray-50 text-gray-900 antialiased;
   }
 }
 
-/* ============================================
-   COMPONENTS LAYER
-   ============================================ */
 @layer components {
   /* Buttons */
   .btn-primary {
@@ -49,16 +40,10 @@
   }
 }
 
-/* ============================================
-   GLOBAL STYLES
-   ============================================ */
-
-/* Font Family */
 * {
   font-family: Outfit;
 }
 
-/* Custom Font Classes */
 .prata-regular {
   font-family: "Prata", serif;
   font-weight: 400;
